@@ -1,0 +1,14 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+
+<div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="py-1 px-2 bg-blue-200 rounded-lg w-1/2 ">Name: {{ user }} </label>
+        {{form.as_p}}
+        <button type="submit" class="ml-20 bg-blue-500 py-2 px-20 rounded-lg ">Post</button>
+    </form>
+</div>
+
+{% endblock %}

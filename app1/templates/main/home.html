@@ -1,0 +1,50 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+{% load static %}
+
+    <div class="grid grid-cols-3">
+
+        <h3>home page</h3>
+        <div class="item-center mx-auto">
+            <div class="w-full bg-white-100 rounded-lg border w-full">
+                <div>
+                    <a href="#" class="rounded-lg bg-gray-100 w-full">make a post</a>
+                </div>
+                
+            </div>
+            {% for item in posts %}
+
+               <div class="grid grid-cols-1 bg-gray-100 border rounded-lg mt-10">
+                    <div>
+                        <a href="#" class="text-red-400 rounded-lg py-1 px-1 ">{{ item.name }}</a>
+                        <p class="py-3 px-1 bg-white-100 ">{{item.text}}</p>
+                    </div>
+                   
+                    <div>
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="" class=" " >
+                        {% endif %}
+                    </div>
+                    <div>
+
+                    </div>
+                    <form method="post" action="{% url 'comment' item.id %}">
+                        <div class="grid grid-cols-2">
+                            {% csrf_token %}
+                        
+                            <input type="text" placeholder="Write a comment.." name="comment"  class="bg-white-100 border rounded-lg w-full px-1 mt-5">
+                            <div class="mt-5">
+                                <button type="submit" class="bg-gray-300 rounded-xl py-1 px-1">send</button>
+                            </div>     
+                        </div>
+                    </form>
+                    
+               </div>
+           
+
+            {% endfor %}
+        </div>   
+    </div>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+ body {
+     font-family: Arial, Helvetica, sans-serif;
+     justify-content: center;
+     text-align: center;
+     margin: 0;
+     display: flex;
+     height: 100vh;
+     background-color: white;
+
+ }
+
+ .login-container {
+     margin: 4rem;
+     background-color: aliceblue;
+     border-radius: 10px;
+     width: 300px;
+     padding: 30px;
+     height: 50%;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+     text-align: center;
+ }
+
+ .login-container h2 {
+     color: black;
+ }
+
+ .login-form {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+     row-gap: 15;
+     margin-top: 19px;
+
+ }
+
+ .login-form label {
+     font-weight: bold;
+     flex-direction: column;
+ }
+
+ .login-form input {
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 6px;
+ }
+
+ .login-form button {
+     padding: 8px;
+     border: 1px solid #12b4cd;
+     background-color: rgb(59, 103, 238);
+     color: black;
+     border-radius: 7px;
+ }
+
+ .error{
+    color: rgb(245, 5, 5);
+    font-size: small;
+}
+ .account {
+     padding: 5px;
+     font-size: small;
+
+ }
+
+ .login-container a {
+     font-size: small;
+     padding-right: 15px;
+ }
+
+
+
+
+ .signup-container {
+     margin: 5rem;
+     background-color: azure;
+     padding: 35px;
+     height: 500px;
+     width: 300px;
+     justify-content: center;
+     text-align: center;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+
+
+ }
+
+ .signup-form {
+     background-color: aliceblue;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 10px;
+
+ }
+
+ .signup-form input {
+     padding: 8px;
+     border: 1px solid #cccccc;
+     border-radius: 7px;
+
+ }
+
+ .button {
+     background-color: rgb(9, 124, 255);
+     color: black;
+ }

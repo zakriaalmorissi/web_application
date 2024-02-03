@@ -1,0 +1,17 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+
+<div>
+    {% if user %}
+    <h3>{{ user }} </h3>
+    {% else %}
+    <h3>No user</h3>
+    {% endif %}
+    <h3>Posts</h3>
+    <form method="post">
+        {{form}}
+    </form>
+</div>
+
+{% endblock %}

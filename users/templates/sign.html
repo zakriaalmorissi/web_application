@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+{% load static %}
+<div class="signup-container">
+    <h2>Sign up</h2>
+    <form  method="POST" class="login-form">
+        {% csrf_token %}
+
+        <label for="username"> Username:</label>
+            {{ forms.username}}
+        <label for="email">Email:</label>
+            {{ forms.email }}
+        <label for="password1">Password:</label>
+            {{ forms.password1 }}
+        <label for="password2">Confirm password</label>
+            {{forms.password2}}
+
+        <button type="submit">Signup</button>
+
+        <a href="{% url 'login' %}" class="account">Already have an account ?</a>
+
+    </form>
+
+</div>
+
+{% endblock %}

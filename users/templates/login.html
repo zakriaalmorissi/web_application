@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+{% load static %}
+<div class="login-container">
+        <h2>Login</h2>
+        <form  method="post" class="login-form">
+            {% csrf_token %}
+            <label for="username">username:</label>
+            {{form.username}}
+            <label for="password">password:</label>
+            {{form.password}}
+
+            {% if error_message %}
+           <p class="error">{{ error_message }}</p> 
+           {% endif %}  
+            <button type="submit" >Login</button>
+            
+            <a href="{% url 'signup' %}" class="account">Create an account ?</a>
+
+        </form>
+   
+</div>
+
+
+
+{% endblock %}
