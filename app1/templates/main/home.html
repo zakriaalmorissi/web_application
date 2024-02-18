@@ -2,8 +2,25 @@
 
 {% block content %}
 {% load static %}
+    <script>
+        document.addEventListener('DOMContentLoaded',function (){
+                    // clear all comments input once the page is loaded 
+            document.querySelector("#comments").value = '';
+            // clear the comment once the user submit the form 
+            document.querySelector('form').onsubmit = () => {
+                document.querySelector("#comments").value = '';
 
-    <div class="grid grid-cols-3">
+
+            return false;
+            
+         }        
+        });
+
+
+
+    </script>
+
+    <div class="grid grid-cols-auto">
 
         <h3>home page</h3>
         <div class="item-center mx-auto">
@@ -16,11 +33,11 @@
             {% for item in posts %}
 
                <div class="grid grid-cols-1 bg-gray-100 border rounded-lg mt-10">
+                
                     <div>
-                        <a href="#" class="text-red-400 rounded-lg py-1 px-1 ">{{ item.name }}</a>
-                        <p class="py-3 px-1 bg-white-100 ">{{item.text}}</p>
+                    <a href="{% url 'comment' item.id %}" class="text-red-400 rounded-lg py-1 px-1 ">{{ item.name }}</a>
+                    <p class="py-3 px-1 bg-white-100 ">{{item.text}}</p>
                     </div>
-                   
                     <div>
                         {% if item.image %}
                         <img src="{{ item.image.url }}" alt="" class=" " >
@@ -30,13 +47,26 @@
 
                     </div>
                     <form method="post" action="{% url 'comment' item.id %}">
-                        <div class="grid grid-cols-2">
+                        <div class="grid grid-cols-3">
                             {% csrf_token %}
-                        
-                            <input type="text" placeholder="Write a comment.." name="comment"  class="bg-white-100 border rounded-lg w-full px-1 mt-5">
-                            <div class="mt-5">
-                                <button type="submit" class="bg-gray-300 rounded-xl py-1 px-1">send</button>
-                            </div>     
+
+                            <div class="mt-10">
+                                <input type="text" placeholder="comment.." name="comment" class="bg-white-100 border rounded-lg w-full px-1 mt-5" id="comments">
+
+                            </div>
+                           
+                            <div class="mt-12">
+                                <button type="submit" class="bg-gray-300 rounded-xl py-3 px-1 hover:bg-gray-600">send</button>
+
+                            </div>
+                            <div class="mt-10 ml-25">
+                                <a href="{% url 'comment' item.id %}" class="ml-2 py-1 px-1 bg-blue-300 rounded-lg hover:bg-blue-500">Details</a>
+
+                            </div>
+
+            
+                            
+                           
                         </div>
                     </form>
                     
@@ -46,5 +76,5 @@
             {% endfor %}
         </div>   
     </div>
-
+   
 {% endblock %}

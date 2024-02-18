@@ -28,22 +28,40 @@
             </div>
             <div class="bg-white border mt-10">
                 {% for comment in comments %}
-                <div class="grid grid-cols-1 border rounded-lg gap-2 mb-3 w-auto">
+                    <div class="grid grid-cols-1 border rounded-lg gap-2 mb-3 w-auto">
 
-                    <p class="text-blue-500">{{comment.name}} ~</p>
+                        <p class="text-blue-500">{{comment.name}} ~</p>
 
-                    <p class="px-1 mb-3 w-1/2 bg-blue-200 rounded-lg"> {{comment.comment}}</p>
+                        <p class="px-1 mb-3 w-1/2 bg-blue-200 rounded-lg"> {{comment.comment}}</p>
+                        {% if delete_comment %}
+                        <div>
+                            <form action="{% url 'delete_comment' comment.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="bg-gray-100 ml-1 py-1 px-1 rounded-lg hover:bg-red-500">Delete</button>
+                        
+                            </form>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
                     
-                   
-
-
+                    
+                {% endfor %}
+            </div>
+            
+        </div>
+        <div class="mt-10" >
+            {% if posts %}
+            <div  class="grid grid-cols-1 gap-3" >
+                {% for post in posts %}
+                <div class="border rounded-lg mb-3 bg-gray-100">
+                    <p class="text-red-400">{{ post.name }}</p>
+                    <p>{{post.text}}</p>
                 </div>
                 {% endfor %}
-
-               
             </div>
+            {% endif %}
         </div>
-
         
 
       
