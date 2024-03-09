@@ -65,7 +65,7 @@ def comment_view(request,id):
             comments.save()
             # get the related cooments to this post 
             get_comments = Comment.objects.filter(post=post)
-            # clean the data and get the post with its user
+            # clean the data and get the comment with its user
             for item in get_comments :
                 item = item
                 get_user = item.name
